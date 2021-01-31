@@ -22,3 +22,7 @@ html {
 .server-response-panel {
   padding: 0 0 0 1em;
 }
+
+#server-response-image {
+  border: 1px solid black;
+}

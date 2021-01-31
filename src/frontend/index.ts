@@ -6,9 +6,12 @@ import { TextOptions } from '../shared/types';
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-const serverResponse = document.getElementById(
-  'server-response',
+const serverResponseStatus = document.getElementById(
+  'server-response-status',
 ) as HTMLElement;
+const serverResponseImage = document.getElementById(
+  'server-response-image',
+) as HTMLImageElement;
 
 // TODO: use window.matchMedia() to rescale canvas if monitor changes
 
@@ -27,13 +30,15 @@ const textState: TextOptions = {
 
 const update = () => {
   drawText(ctx, textState);
-  serverResponse.innerText = 'loading...';
+  serverResponseStatus.innerText = 'loading...';
   fetchImage(textState)
-    .then((res) => {
-      serverResponse.innerText = 'loaded';
+    .then((res) => res.blob())
+    .then((blob) => {
+      serverResponseImage.src = URL.createObjectURL(blob);
+      serverResponseStatus.innerText = '';
     })
     .catch(() => {
-      serverResponse.innerText = 'error!';
+      serverResponseStatus.innerText = 'error!';
     });
 };
 
