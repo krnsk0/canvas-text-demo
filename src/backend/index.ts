@@ -2,17 +2,20 @@ import express from 'express';
 import webpack from 'webpack';
 import middleware from 'webpack-dev-middleware';
 import path from 'path';
+import morgan from 'morgan';
 import { handleFetch } from './handleFetch';
+
 const config = require('../../webpack.config.js');
 
 const PORT = 7777;
 
 const app = express();
 
-const compiler = webpack(config);
+app.use(morgan('tiny'));
 
 app.use(express.json());
 
+const compiler = webpack(config);
 app.use(middleware(compiler, {}));
 
 app.get('/', (req, res) =>
