@@ -1,3 +1,7 @@
+# What is this?
+
+This repo demonstrates isomorphic text rendering using `node-canvas`. The client application has controls allowing the user to paint formatted text to a canvas. Every time the client-side canvas is updated, json describing the text is POSTed to a small express server which calls the same functions the client app uses to wrap `<canvas>`, except the drawing context is a server-side canvas from `node-canvas`. The resulting drawing is streamed back to the client and displayed in an `<image>` element.
+
 # Quickstart
 
 This uses `node-canvas`, which depends on `cairo`. On OSX:

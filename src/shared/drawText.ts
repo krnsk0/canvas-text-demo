@@ -27,7 +27,6 @@ export const drawText = (
   const fontString = `${italic ? 'italic' : ''} ${
     bold ? 'bold' : ''
   } ${fontInPx}px ${font}`;
-  console.log('fontString: ', fontString);
   ctx.font = fontString;
 
   // draw background
