@@ -10,3 +10,15 @@ html {
 #canvas {
   border: 1px solid black;
 }
+
+.container {
+  display: flex;
+}
+
+.canvas-panel {
+  padding: 0 0 0 1em;
+}
+
+.server-response-panel {
+  padding: 0 0 0 1em;
+}

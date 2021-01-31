@@ -2,6 +2,7 @@ import express from 'express';
 import webpack from 'webpack';
 import middleware from 'webpack-dev-middleware';
 import path from 'path';
+import { handleFetch } from './handleFetch';
 const config = require('../../webpack.config.js');
 
 const PORT = 7777;
@@ -9,6 +10,8 @@ const PORT = 7777;
 const app = express();
 
 const compiler = webpack(config);
+
+app.use(express.json());
 
 app.use(middleware(compiler, {}));
 
@@ -19,6 +22,8 @@ app.get('/', (req, res) =>
 app.get('/style.css', (req, res) =>
   res.sendFile(path.join(__dirname, '..', 'frontend', 'styles.css')),
 );
+
+app.post('/image', handleFetch);
 
 app.listen(PORT, () => {
   console.log(`started on ${PORT}`);

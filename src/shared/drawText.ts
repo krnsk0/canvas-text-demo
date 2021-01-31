@@ -1,6 +1,6 @@
 import { TextOptions } from './types';
 
-const sizeMap = {
+const fontSizeMap = {
   small: 12,
   normal: 16,
   large: 22,
@@ -9,10 +9,10 @@ const sizeMap = {
 
 export const drawText = (
   ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  text: string,
   {
+    text,
+    x,
+    y,
     font,
     fontSize,
     backgroundColor,
@@ -20,16 +20,14 @@ export const drawText = (
     bold,
     italic,
     underline,
-    alignment,
   }: TextOptions,
 ) => {
   // set up typography
-  const fontInPx = sizeMap[fontSize];
+  const fontInPx = fontSizeMap[fontSize];
   const fontString = `${italic ? 'italic' : ''} ${
     bold ? 'bold' : ''
   } ${fontInPx}px ${font}`;
   console.log('fontString: ', fontString);
-  ctx.textAlign = alignment;
   ctx.font = fontString;
 
   // draw background

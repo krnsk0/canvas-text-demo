@@ -1,4 +1,7 @@
 export type TextOptions = {
+  text: string;
+  x: number;
+  y: number;
   font: 'Arial' | 'Courier New';
   fontSize: 'small' | 'normal' | 'large' | 'huge';
   backgroundColor: string;
@@ -6,5 +9,4 @@ export type TextOptions = {
   bold: boolean;
   italic: boolean;
   underline: boolean;
-  alignment: 'left' | 'right' | 'center';
 };

@@ -8,9 +8,49 @@
     <title>canvas text demo</title>
   </head>
   <body>
-    <div>
-      <div></div>
-      <canvas id="canvas"></canvas>
+    <div class="container">
+      <div class="text-properties-panel">
+        <div>text properties</div>
+        <div>
+          <label>text</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label>font</label>
+          <select name="fonts" id="fonts">
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+          </select>
+        </div>
+        <div>
+          <input type="checkbox" id="italic" />
+          <label>italic</label>
+        </div>
+        <div>
+          <input type="checkbox" id="bold" />
+          <label>bold</label>
+        </div>
+        <div>
+          <input type="checkbox" id="underline" />
+          <label>underline</label>
+        </div>
+        <div>
+          <label>text color</label>
+          <input type="color" id="color" />
+        </div>
+        <div>
+          <label>background color</label>
+          <input type="color" id="background-color" />
+        </div>
+      </div>
+      <div class="canvas-panel">
+        <div>client-side canvas</div>
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="server-response-panel">
+        <div>server-side canvas</div>
+        <div id="server-response"></div>
+      </div>
     </div>
     <script src="bundle.js"></script>
   </body>
