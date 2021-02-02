@@ -1,6 +1,5 @@
-import { Request, Response, text } from 'express';
+import { Request, Response } from 'express';
 import { createCanvas } from 'canvas';
-// import { drawText } from '../shared/drawText';
 import { TextOptions } from '../shared/types';
 import puppeteer from 'puppeteer';
 
