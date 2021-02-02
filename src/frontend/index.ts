@@ -40,6 +40,7 @@ const textState: TextOptions = {
   bold: false,
   italic: false,
   underline: false,
+  devicePixelRatio: window.devicePixelRatio,
 };
 
 // update func called when anything changes
@@ -47,11 +48,14 @@ const update = () => {
   ctx.fillStyle = 'white';
   ctx.fillRect(0, 0, 200, 200);
   drawText(ctx, textState);
-  serverResponseStatus.innerText = 'loading...';
-  serverResponseImage.style.display = 'none';
+  // NOTE: I decided to let the old image stick in place while loading to
+  //       reduce apparent jank.
+  // serverResponseStatus.innerText = 'loading...';
+  // serverResponseImage.style.display = 'none';
   fetchImage(textState)
     .then((res) => res.blob())
     .then((blob) => {
+      serverResponseImage.style.width = '200px';
       serverResponseImage.src = URL.createObjectURL(blob);
       serverResponseImage.style.display = 'inherit';
       serverResponseStatus.innerText = '';

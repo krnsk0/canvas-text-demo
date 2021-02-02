@@ -9,4 +9,5 @@ export type TextOptions = {
   bold: boolean;
   italic: boolean;
   underline: boolean;
+  devicePixelRatio: number;
 };
