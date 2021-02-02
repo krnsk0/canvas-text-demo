@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import { handleFetch } from './handleFetch';
 
 const config = require('../../webpack.config.js');
+const sharedConfig = require('../../webpack.config.shared.js');
 
 const PORT = 7777;
 
@@ -17,6 +18,9 @@ app.use(express.json());
 
 const compiler = webpack(config);
 app.use(middleware(compiler, {}));
+
+const sharedCompiler = webpack(sharedConfig);
+app.use(middleware(sharedCompiler, {}));
 
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html')),
